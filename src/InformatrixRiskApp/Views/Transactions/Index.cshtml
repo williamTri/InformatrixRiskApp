@@ -1,0 +1,20 @@
+﻿@model IEnumerable<InformatrixRiskApp.Models.Transaction>
+
+@{
+    ViewBag.Title = "Details";
+}
+<h2>Infomatrix Transactions</h2>
+
+<p>
+    There are @Model.Count() Transactions:
+</p>
+<ul>
+    @foreach (var t in Model)
+    {
+        <li>@t.TrxType , cust: @t.Customer , $@t.Amount AUD , @t.Participant  , $@t.Stake AUD , @t.TrxEvent , 
+            <span style="color: red">
+                @t.RiskyCust , @t.RiskyTrx
+            </span>
+        </li>
+    }
+</ul>

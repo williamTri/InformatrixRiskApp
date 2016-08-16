@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using InformatrixRiskApp.Models;
 
 namespace InformatrixRiskApp
 {
@@ -27,6 +28,9 @@ namespace InformatrixRiskApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Read Risk app files locations and names
+            services.Configure<InputFilesPath>(Configuration.GetSection("RiskInputFiles"));
+
             // Add framework services.
             services.AddMvc();
         }
@@ -54,7 +58,7 @@ namespace InformatrixRiskApp
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-            });
-        }
+        });
+      }
     }
 }
